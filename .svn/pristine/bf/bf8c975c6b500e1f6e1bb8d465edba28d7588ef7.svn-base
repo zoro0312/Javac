@@ -1,0 +1,19 @@
+package com.akito.test;
+
+import org.junit.Test;
+
+import com.akito.tools.javac.comp.JStringManager;
+
+public class TestJStringManager {
+	
+	@Test
+	public void test() {
+		JStringManager manager= JStringManager.instance();
+		
+		System.out.println(manager.size());
+		manager.put(1, "hello");
+		manager.put(2, "world");
+		System.out.println(manager.entrySet());
+	}
+
+}

@@ -1,0 +1,39 @@
+package com.akito.tools.javac.main;
+
+import java.io.File;
+
+/**
+ * Created by Administrator on 2014/4/17.
+ */
+public class Main {
+
+    /** 源文件所在目录
+     */
+    private static String path;
+
+    public static void main(String[] args) {
+        String filename = "D:/workspace/Javac1.7/TestCase/Main.java";
+        createDirectory(filename);
+        StaticAnalysis analysis = new StaticAnalysis(filename, path);
+        analysis.analysis();
+    }
+
+    /** 从源文件全路径中提取出源文件目录，并在该目录下创建静态数据库存放目录（\dbs）
+     *  和动态数据库存放目录(\ddfile)
+     */
+    public static void createDirectory(String filename) {
+        String[] args = filename.split("/");
+        StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < args.length-1; i ++)
+            builder.append(args[i] + "/");
+        path = builder.toString();
+        System.out.println(path);
+        File dbsFile = new File(path +"dbs");
+        if(!dbsFile.exists()) 
+        	dbsFile.mkdir();
+        File ddFile = new File(path + "ddfile");
+        if(!ddFile.exists())
+        	ddFile.mkdir();
+    }
+
+}

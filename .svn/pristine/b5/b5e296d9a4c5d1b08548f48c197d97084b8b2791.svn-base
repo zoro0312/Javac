@@ -1,0 +1,16 @@
+package com.akito.test;
+
+import org.junit.Test;
+
+import com.akito.tools.javac.main.Main;
+
+public class TestMain {
+	
+	@Test
+	public void testCreateDirectory() {
+		Main main = new Main();
+		String filename = "D:/workspace/Javac1.7/TestCase/Main.java";
+		main.createDirectory(filename);
+	}
+
+}

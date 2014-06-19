@@ -1,0 +1,24 @@
+package com.akito.test;
+
+import java.io.File;
+import java.io.IOException;
+
+import org.junit.Test;
+
+import com.akito.tools.file.DbsDocStuct;
+
+public class TestDbsDocStruct {
+	
+	@Test
+	public void test () {
+		DbsDocStuct dds = new DbsDocStuct(new File("keep.LST"));
+		dds.addNamerec("Main.java", "pa_1");
+		try {
+			dds.writeObeject();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

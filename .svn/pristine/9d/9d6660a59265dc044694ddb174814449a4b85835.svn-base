@@ -1,0 +1,11 @@
+package com.akito.tools.file;
+
+import com.sun.tools.javac.file.Paths;
+
+public class JFileManager {
+	
+	private Paths path;
+	
+	
+
+}

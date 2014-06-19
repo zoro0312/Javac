@@ -1,0 +1,92 @@
+package com.akito.tools.javac.main;
+
+import java.io.File;
+
+import com.akito.tools.javac.comp.DbsIndexManager;
+import com.akito.tools.javac.comp.JFileNode;
+import com.akito.tools.javac.comp.JStringManager;
+
+/**
+ * Created by Administrator on 2014/4/16.
+ */
+public class StaticAnalysis {
+
+	/** 创建JFileNode
+	 */
+	private JFileNode fileNode;
+	
+	private JStringManager manager;
+	
+	private String fileName;
+	
+	private String path;
+	
+	private char[] buf;
+	
+	public StaticAnalysis(String fileName, String path) {
+		this.fileName = fileName;
+		this.path = path;
+		fileNode = new JFileNode();
+		manager = JStringManager.instance();
+	}
+	
+	public void analysis() {
+		
+	}
+	
+	/** 设置原文件名（包括路径）
+	 */
+	public void setName() {
+		manager.add(fileName);
+		fileNode.setName(fileName);
+	}
+	
+	/** 设置数据库文件名
+	 *  数据库文件名的编码规则为：pa_XX.dbs，XX从1开始顺序编号；
+　　 *　数据库文件保存在\dbs目录下。
+	 */
+	public void setDbsName() {
+		String dataFileName = path + "/dbs" + "/pa_" + DbsIndexManager.index() + ".dbs";
+		manager.add(dataFileName);
+		fileNode.setDbsName(dataFileName);
+	}
+	
+	/**DD、DDH、DDC、DS等文件存放的路径这些文件保存在数据库文件保存在\ddfile目录下
+	 */
+	public void setDDFilePath() {
+		String ddFilePath = path + "/ddFile";
+		manager.add(ddFilePath);
+		fileNode.setDdPath(ddFilePath);
+	}
+	
+	/** 对于Java这类没有包含关系的语言来说，把该域清0即可
+	 */
+	public void setIncludingFileRefList () {
+		fileNode.setIncludingFileRefList(0);
+	}
+	
+	/** 全局变量清零
+	 */
+	public void setGlobalVarDefList() {
+		fileNode.setGlobalVarDefList(0);
+	}
+	
+	/** 静态变量清零
+	 */
+	public void setStaticVarDefList() {
+		fileNode.setStaticVarDefList(0);
+	}
+	
+	/** 获取最后修改时间
+	 */
+	public void setLastMTime() {
+		File file = new File(fileName);
+		fileNode.setLastMTime(file.lastModified());
+	}
+	
+	/** 总行数
+	 */
+	public void setTotalLines() {
+		
+	}
+}

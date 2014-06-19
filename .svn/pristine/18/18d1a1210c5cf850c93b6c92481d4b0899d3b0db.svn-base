@@ -1,0 +1,115 @@
+package com.akito.tools.javac.comp;
+
+import java.util.List;
+
+import com.sun.tools.javac.tree.JCTree;
+
+
+public class JFileNode {
+	
+//	private static JFileNode instance = null;
+	
+//	public static JFileNode instance() {
+//		if(instance == null) {
+//			instance = new JFileNode();
+//		}
+//		return instance;
+//	}
+	public JFileNode() {
+		manager = JStringManager.instance();
+	}
+	
+	/** 源文件名(包括路径)在StringManager中的索引值
+	 */
+	private int name;
+	
+	/** 数据库文件名（包括路径）数据库文件名的编码规则为：pa_XX.dbs，XX从1开始顺序编号；
+	 */
+	private int dbsName;
+	
+	/** DD、DDH、DDC、DS等文件存放的路径
+	 */
+	private int DDPath;
+	
+	/** 源文件总行数
+	 */
+	private int totalLines;
+	
+	/** 源文件的空行数
+	 */
+	private int blankLines;
+	
+	/** 注释行数(包括整行注释和半行注释)
+	 */
+	private int commentLines;
+	
+	/** 半行注释行数
+	 */
+	private int partialLines;
+	
+	/** 源文件最后修改时间
+	 */
+	private long lastMTime;
+	
+	/** 对于Java这类没有包含关系的语言来说，把该域清0即可
+	 */
+	private int includingFileRefList = 0;	
+	
+	/** 全局变量
+	 */
+	private int globalVarDefList = 0;
+	
+	/** 静态全局变量
+	 */
+	private int staticVarDefList = 0;
+	
+	/**
+	 * 创建一个CFuncDefList对象，把其地址赋给该域。对于源程序中定义的每一个函数，
+	 * 都要在这个新创建的CFuncDefList链表对象（由pFuncDefList所指向）里插入一个新CFuncDef节点来记录该函数的相关信息。
+	 */
+	private List<JFuncDef> funcDefList;
+	
+	
+	/** blocks
+	 */
+	
+	/** classes
+	 */
+	private List<JClassDef> classDefList;
+
+	private  JStringManager manager;
+	
+	public void setName(String fileName) {
+		this.name = manager.getIndex(fileName);
+	}
+	
+	public void setDbsName(String dbsName) {
+		this.dbsName = manager.getIndex(dbsName);
+	}
+	
+	public void setDdPath(String ddpath) {
+		this.DDPath = manager.getIndex(ddpath);
+	}
+	
+	public void funcDefInfo(JCTree tree) {
+		
+	}
+	
+	public void classdefInfo(JCTree tree) {
+		
+	}
+
+	public void setTotalLines(char []buf, int max) {
+	}
+
+	public void setBlankLines(char []buf, int max) {
+	}
+
+	public void setCommentLines(char []buf, int max) {
+	}
+
+	public void setPartialLines(char []buf, int max) {
+	}
+	
+	
+}

@@ -1,0 +1,207 @@
+package com.akito.tools.javac.comp;
+
+import java.util.List;
+
+
+public class JFileNode {
+	
+	private static JFileNode instance = null;
+	
+	public static JFileNode instance() {
+		if(instance == null) {
+			instance = new JFileNode();
+		}
+		return instance;
+	}
+	
+	/** 源文件名(包括路径)在StringManager中的索引值
+	 */
+	private int name;
+	
+	/** 数据库文件名（包括路径）数据库文件名的编码规则为：pa_XX.dbs，XX从1开始顺序编号；
+	 */
+	private int dbsName;
+	
+	/** DD、DDH、DDC、DS等文件存放的路径
+	 */
+	private int DDPath;
+	
+	/** 源文件总行数
+	 */
+	private int totalLines;
+	
+	/** 源文件的空行数
+	 */
+	private int blankLines;
+	
+	/** 注释行数(包括整行注释和半行注释)
+	 */
+	private int commentLines;
+	
+	/** 半行注释行数
+	 */
+	private int partialLines;
+	
+	/** 源文件最后修改时间
+	 */
+	private long lastMTime;
+	
+	/** 对于Java这类没有包含关系的语言来说，把该域清0即可
+	 */
+	private int includingFileRefList = 0;	
+	
+	/** 全局变量
+	 */
+	private int globalVarDefList = 0;
+	
+	/** 静态全局变量
+	 */
+	private int staticVarDefList = 0;
+	
+	/**
+	 * 创建一个CFuncDefList对象，把其地址赋给该域。对于源程序中定义的每一个函数，
+	 * 都要在这个新创建的CFuncDefList链表对象（由pFuncDefList所指向）里插入一个新CFuncDef节点来记录该函数的相关信息。
+	 */
+	private List<JFuncDef> funcDefList;
+	
+	
+	/** blocks
+	 */
+	
+	/** classes
+	 */
+	private List<JClassDef> classDefList;
+
+	
+	public int getName() {
+		return name;
+	}
+
+
+	public void setName(int name) {
+		this.name = name;
+	}
+
+
+	public int getDbsName() {
+		return dbsName;
+	}
+
+
+	public void setDbsName(int dbsName) {
+		this.dbsName = dbsName;
+	}
+
+
+	public int getDDPath() {
+		return DDPath;
+	}
+
+
+	public void setDDPath(int dDPath) {
+		DDPath = dDPath;
+	}
+
+
+	public int getTotalLines() {
+		return totalLines;
+	}
+
+
+	public void setTotalLines(int totalLines) {
+		this.totalLines = totalLines;
+	}
+
+
+	public int getBlankLines() {
+		return blankLines;
+	}
+
+
+	public void setBlankLines(int blankLines) {
+		this.blankLines = blankLines;
+	}
+
+
+	public int getCommentLines() {
+		return commentLines;
+	}
+
+
+	public void setCommentLines(int commentLines) {
+		this.commentLines = commentLines;
+	}
+
+
+	public int getPartialLines() {
+		return partialLines;
+	}
+
+
+	public void setPartialLines(int partialLines) {
+		this.partialLines = partialLines;
+	}
+
+
+	public long getLastMTime() {
+		return lastMTime;
+	}
+
+
+	public void setLastMTime(long lastMTime) {
+		this.lastMTime = lastMTime;
+	}
+
+
+	public int getIncludingFileRefList() {
+		return includingFileRefList;
+	}
+
+
+	public void setIncludingFileRefList(int includingFileRefList) {
+		this.includingFileRefList = includingFileRefList;
+	}
+
+
+	public int getGlobalVarDefList() {
+		return globalVarDefList;
+	}
+
+
+	public void setGlobalVarDefList(int globalVarDefList) {
+		this.globalVarDefList = globalVarDefList;
+	}
+
+
+	public int getStaticVarDefList() {
+		return staticVarDefList;
+	}
+
+
+	public void setStaticVarDefList(int staticVarDefList) {
+		this.staticVarDefList = staticVarDefList;
+	}
+
+
+	public List<JFuncDef> getFuncDefList() {
+		return funcDefList;
+	}
+
+
+	public void setFuncDefList(List<JFuncDef> funcDefList) {
+		this.funcDefList = funcDefList;
+	}
+
+
+	public List<JClassDef> getClassDefList() {
+		return classDefList;
+	}
+
+
+	public void setClassDefList(List<JClassDef> classDefList) {
+		this.classDefList = classDefList;
+	}
+	
+	
+	
+}

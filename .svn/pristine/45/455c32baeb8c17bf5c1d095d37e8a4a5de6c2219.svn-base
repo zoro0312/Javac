@@ -1,0 +1,105 @@
+package com.akito.tools.javac.comp;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+
+public class JStringManager extends HashMap<Integer, String>{
+	
+	private static final long serialVersionUID = 7989790042344121432L;
+	
+	private static JStringManager instance = null;
+	
+	JStringManager() {
+	}
+	
+	public static JStringManager instance(){
+		if(instance == null) {
+			instance = new JStringManager();
+		}
+		return instance;
+	}
+
+	@Override
+	public void clear() {
+		// TODO Auto-generated method stub
+		super.clear();
+	}
+
+	@Override
+	public Object clone() {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
+
+	@Override
+	public boolean containsKey(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.containsKey(arg0);
+	}
+
+	@Override
+	public boolean containsValue(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.containsValue(arg0);
+	}
+
+	@Override
+	public Set<java.util.Map.Entry<Integer, String>> entrySet() {
+		// TODO Auto-generated method stub
+		return super.entrySet();
+	}
+
+	@Override
+	public String get(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.get(arg0);
+	}
+
+	@Override
+	public boolean isEmpty() {
+		// TODO Auto-generated method stub
+		return super.isEmpty();
+	}
+
+	@Override
+	public Set<Integer> keySet() {
+		// TODO Auto-generated method stub
+		return super.keySet();
+	}
+
+	@Override
+	public String put(Integer arg0, String arg1) {
+		// TODO Auto-generated method stub
+		return super.put(arg0, arg1);
+	}
+
+	@Override
+	public void putAll(Map<? extends Integer, ? extends String> arg0) {
+		// TODO Auto-generated method stub
+		super.putAll(arg0);
+	}
+
+	@Override
+	public String remove(Object arg0) {
+		// TODO Auto-generated method stub
+		return super.remove(arg0);
+	}
+
+	@Override
+	public int size() {
+		// TODO Auto-generated method stub
+		return super.size();
+	}
+
+	@Override
+	public Collection<String> values() {
+		// TODO Auto-generated method stub
+		return super.values();
+	}
+
+	
+	
+
+}
